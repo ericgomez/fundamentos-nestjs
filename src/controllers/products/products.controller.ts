@@ -10,6 +10,7 @@ import {
   HttpStatus,
   HttpCode,
   Res,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { Response } from 'express';
@@ -45,8 +46,9 @@ export class ProductsController {
   @Get(':productId')
   @HttpCode(HttpStatus.ACCEPTED) // 👈 Using decorator
   // En @Param recibimos el nombre del atributo productId
-  getProduct(@Param('productId') productId: string) {
-    return this.productsService.findOne(+productId); // El signo '+' convierte un string a un entero
+  // Los pipes tienen dos funciones principales validar y transformar.
+  getProduct(@Param('productId', ParseIntPipe) productId: number) {
+    return this.productsService.findOne(productId);
   }
 
   /*@Get('products')
