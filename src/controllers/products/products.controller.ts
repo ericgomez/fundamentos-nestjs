@@ -7,7 +7,12 @@ import {
   Body,
   Put,
   Delete,
+  HttpStatus,
+  HttpCode,
+  Res,
 } from '@nestjs/common';
+
+import { Response } from 'express';
 
 // NO necesitamos agregar la ruta de products en nuestros @Gets por que ya esta definido en el @Controller
 @Controller('products')
@@ -21,13 +26,25 @@ export class ProductsController {
   }
 
   // Example: http://localhost:3000/products/1
-  @Get(':productId')
+  /*@Get(':productId')
+  @HttpCode(HttpStatus.ACCEPTED) // 👈 Using decorator
   // En @Param recibimos el nombre del atributo productId
   getProduct(@Param('productId') productId: string) {
     // Recibo el nombre renombrado con el mismo nombre productId
     return {
       product: `${productId}`,
     };
+  }*/
+
+  // Recuperando respuesta desde express
+  @Get(':productId')
+  @HttpCode(HttpStatus.ACCEPTED) // 👈 Using decorator
+  // En @Param recibimos el nombre del atributo productId
+  getProduct(@Res() response: Response, @Param('productId') productId: string) {
+    response.status(200).send({
+      // 👈 Using express directly
+      product: `${productId}`,
+    });
   }
 
   /*@Get('products')
