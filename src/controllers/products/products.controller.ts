@@ -1,4 +1,13 @@
-import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
 
 // NO necesitamos agregar la ruta de products en nuestros @Gets por que ya esta definido en el @Controller
 @Controller('products')
@@ -47,5 +56,19 @@ export class ProductsController {
       message: 'accion de crear',
       payload,
     };
+  }
+
+  @Put(':id') // 👈 New decorator
+  update(@Param('id') id: number, @Body() payload: any) {
+    // recibimos el id como parametro y los datos a modificar desde el @Body
+    return {
+      id,
+      payload,
+    };
+  }
+
+  @Delete(':id') // 👈 New decorator
+  delete(@Param('id') id: number) {
+    return id;
   }
 }
