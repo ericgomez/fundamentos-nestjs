@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
 
 // NO necesitamos agregar la ruta de products en nuestros @Gets por que ya esta definido en el @Controller
 @Controller('products')
@@ -6,7 +6,9 @@ export class ProductsController {
   // Notas: Las rutas estaticas siempre van primero para no chocar con las rutas dinamicas
   @Get('filter')
   getProductFilter() {
-    return `yo soy un filter`;
+    return {
+      message: `yo soy un filter`,
+    };
   }
 
   // Example: http://localhost:3000/products/1
@@ -14,7 +16,9 @@ export class ProductsController {
   // En @Param recibimos el nombre del atributo productId
   getProduct(@Param('productId') productId: string) {
     // Recibo el nombre renombrado con el mismo nombre productId
-    return `product ${productId}`;
+    return {
+      product: `${productId}`,
+    };
   }
 
   /*@Get('products')
@@ -31,6 +35,17 @@ export class ProductsController {
     @Query('offset') offset = 0, // Enviamos atributos por defecto
     @Query('brand') brand: string,
   ) {
-    return `products limit=> ${limit} offset=> ${offset} brand=> ${brand}`;
+    return {
+      message: `products limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
+    };
+  }
+
+  @Post() // 👈 New decorator
+  create(@Body() payload: any) {
+    // Con @Body recibimos los datos del cuerpo y lo renombramos a payload
+    return {
+      message: 'accion de crear',
+      payload,
+    };
   }
 }

@@ -7,6 +7,9 @@ export class CategoriesController {
   // Example: http://localhost:3000/categories/1/products/10
   @Get(':id/products/:productId')
   getCategory(@Param('productId') productId: string, @Param('id') id: string) {
-    return `product ${productId} and categorie ${id}`;
+    return {
+      product: `${productId}`,
+      categorie: `${id}`,
+    };
   }
 }
