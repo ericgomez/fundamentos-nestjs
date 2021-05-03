@@ -7,8 +7,8 @@ async function bootstrap() {
   // Activamos el pipe para poder ser utilizado
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
+      whitelist: true, //Quita todos los atributos que esten de mas o no esten definidos en el dtos
+      forbidNonWhitelisted: true, //Alerta sobre los atributos que esten de mas o no esten definidos en el dtos
     }),
   );
   await app.listen(3000);
