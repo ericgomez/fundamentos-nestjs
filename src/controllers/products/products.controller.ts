@@ -17,6 +17,7 @@ import { Response } from 'express';
 
 // Utilizamos nuestro propio pipe y no el de nestjs
 import { ParseIntPipe } from '../../common/parse-int.pipe';
+import { CreateProductDto, UpdateProductDto } from './../../dtos/products.dtos';
 
 import { ProductsService } from './../../services/products/products.service';
 
@@ -75,7 +76,7 @@ export class ProductsController {
   }
 
   @Post() // 👈 New decorator
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     // Con @Body recibimos los datos del cuerpo y lo renombramos a payload
     // return {
     //   message: 'accion de crear',
@@ -85,7 +86,7 @@ export class ProductsController {
   }
 
   @Put(':id') // 👈 New decorator
-  update(@Param('id') id: string, @Body() payload: any) {
+  update(@Param('id') id: string, @Body() payload: UpdateProductDto) {
     // recibimos el id como parametro y los datos a modificar desde el @Body
     // return {
     //   id,
