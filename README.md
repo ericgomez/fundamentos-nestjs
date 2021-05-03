@@ -22,40 +22,44 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Curso de Backend con NestJS
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Proyecto del curso
+
+![Proyec](https://static.platzi.com/media/landing-projects/Proyecto-1.png)
+## Backend de PlatziStore - Fundamentos
+Crea tu primer proyecto backend con NestJS, desarrolla la primera API de PlatziStore y consúltala desde Postman o Insomina.
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn run start
 
 # watch mode
-$ npm run start:dev
+$ yarn run start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn run start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn run test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn run test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn run test:cov
 ```
 
 ## Support
